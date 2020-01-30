@@ -69,6 +69,7 @@ namespace lox_csharp_interpreter
                 case '<': addToken(matchNextChar('=') ? TokenType.LESS_EQUAL : TokenType.LESS); break;
                 case '>': addToken(matchNextChar('=') ? TokenType.GREATER_EQUAL : TokenType.GREATER_EQUAL); break;
 
+                //TODO: handle /* .... */ multi line comments
                 case '/':
                     if (matchNextChar('/'))
                     {
@@ -171,6 +172,7 @@ namespace lox_csharp_interpreter
 
             advanceChar();
 
+            // current - start - 2 to remove quotations
             string value = source.Substring(start + 1, current - start - 2);
             addToken(TokenType.STRING, value);
         }
