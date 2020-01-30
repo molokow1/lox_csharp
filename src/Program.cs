@@ -48,10 +48,16 @@ namespace lox_csharp_interpreter
         private static void run(string source)
         {
             Scanner scanner = new Scanner(source);
-            Console.WriteLine(source);
+            var tokens = scanner.scanTokens();
+            foreach (var token in tokens)
+            {
+                Console.WriteLine(token.ToString());
+            }
+
+            // Console.WriteLine(source);
         }
 
-        private static void error(int line, string message)
+        public static void error(int line, string message)
         {
             report(line, "", message);
         }

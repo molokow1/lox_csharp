@@ -6,7 +6,7 @@ namespace lox_csharp_interpreter
     {
         // Single-char tokens,
         LEFT_PAREN, RIGHT_PAREN, LEFT_BRACE, RIGHT_BRACE,
-        COMMA, DOT, MINUS, SEMICOLON, SLASH, START,
+        COMMA, DOT, PLUS, MINUS, SEMICOLON, SLASH, START,
 
         // One or two char tokens
         BANG, BANG_EQUAL, EQUAL, EQUAL_EQUAL,
