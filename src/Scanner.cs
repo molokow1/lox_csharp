@@ -63,7 +63,7 @@ namespace lox_csharp_interpreter
                 case '-': addToken(TokenType.MINUS); break;
                 case '+': addToken(TokenType.PLUS); break;
                 case ';': addToken(TokenType.SEMICOLON); break;
-                case '*': addToken(TokenType.START); break;
+                case '*': addToken(TokenType.STAR); break;
                 case '!': addToken(matchNextChar('=') ? TokenType.BANG_EQUAL : TokenType.BANG); break;
                 case '=': addToken(matchNextChar('=') ? TokenType.EQUAL_EQUAL : TokenType.EQUAL); break;
                 case '<': addToken(matchNextChar('=') ? TokenType.LESS_EQUAL : TokenType.LESS); break;
@@ -77,6 +77,19 @@ namespace lox_csharp_interpreter
                         while (peekChar() != '\n' && !isAtEnd())
                         {
                             advanceChar();
+                        }
+                    }
+                    else if (matchNextChar('*'))
+                    {
+                        while (advanceChar() != '*' && !isAtEnd())
+                        {
+                            if (peekChar() == '*' && peekNextChar() == '/')
+                            {
+                                //consume * and /
+                                advanceChar();
+                                advanceChar();
+                                break;
+                            }
                         }
                     }
                     else
